@@ -1,31 +1,34 @@
 package cc.propertyanimation;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by lichengcai on 2018/2/7.
+ */
 
+public class ViewPropertyAnimatorActivity extends Activity {
+
+    @BindView(R.id.image)
+    ImageView image;
     @BindView(R.id.button)
     Button button;
-    @BindView(R.id.activity_main)
-    ConstraintLayout activityMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_view_property);
         ButterKnife.bind(this);
     }
 
     @OnClick(R.id.button)
     public void onViewClicked() {
-        startActivity(new Intent(MainActivity.this,ViewPropertyAnimatorActivity.class));
+        image.animate().translationX(300).setDuration(1000);
     }
 }
